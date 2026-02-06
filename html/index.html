@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SeaToSpace | Operational Intelligence</title>
+
+<style>
+:root{
+  --bg:#05070f;
+  --glass:rgba(255,255,255,0.08);
+  --border:rgba(255,255,255,0.15);
+  --text:#e8ecff;
+  --muted:#9aa3c7;
+  --accent:#4fd1ff;
+  --accent2:#8b7cff;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto;
+  background:
+    radial-gradient(900px 500px at 15% 10%,rgba(79,209,255,.15),transparent 60%),
+    radial-gradient(900px 500px at 85% 20%,rgba(139,124,255,.15),transparent 60%),
+    var(--bg);
+  color:var(--text);
+}
+
+/* GRID BACKGROUND */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(circle at 50% 20%, black, transparent 70%);
+  pointer-events:none;
+}
+
+/* GLASS */
+.glass{
+  background:var(--glass);
+  backdrop-filter:blur(18px);
+  border:1px solid var(--border);
+  border-radius:18px;
+}
+
+/* HEADER */
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  backdrop-filter:blur(16px);
+  background:rgba(5,7,15,.6);
+  border-bottom:1px solid var(--border);
+}
+
+.nav{
+  max-width:1200px;
+  margin:auto;
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-weight:600;
+  letter-spacing:.5px;
+}
+
+.nav a{
+  color:var(--muted);
+  text-decoration:none;
+  margin-left:20px;
+  font-size:14px;
+}
+
+.nav a:hover{color:var(--text)}
+
+/* HERO */
+.hero{
+  max-width:1200px;
+  margin:80px auto 40px;
+  padding:0 20px;
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:30px;
+}
+
+.hero h1{
+  font-size:42px;
+  line-height:1.1;
+  margin-bottom:16px;
+}
+
+.hero p{
+  color:var(--muted);
+  max-width:55ch;
+  line-height:1.6;
+}
+
+.actions{
+  margin-top:24px;
+}
+
+button{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  border:none;
+  color:black;
+  padding:12px 18px;
+  border-radius:12px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+button.secondary{
+  background:transparent;
+  color:var(--text);
+  border:1px solid var(--border);
+  margin-left:10px;
+}
+
+/* LIVE PANEL */
+.panel{
+  padding:20px;
+}
+
+.stat{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:12px;
+}
+
+.kpi{
+  padding:14px;
+  border-radius:14px;
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--border);
+}
+
+.kpi span{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.kpi b{
+  display:block;
+  font-family:monospace;
+  margin-top:6px;
+  font-size:18px;
+}
+
+/* FEED */
+.feed{
+  font-family:monospace;
+  font-size:12px;
+  max-height:220px;
+  overflow:auto;
+}
+
+.event{
+  padding:6px 0;
+  border-bottom:1px dashed rgba(255,255,255,.1);
+}
+
+/* SECTIONS */
+section{
+  max-width:1200px;
+  margin:60px auto;
+  padding:0 20px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.card{
+  padding:18px;
+}
+
+.card h3{
+  margin-top:0;
+  font-size:16px;
+}
+
+.card p{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.5;
+}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--border);
+  margin-top:80px;
+  padding:30px 20px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">SeaToSpace</div>
+    <div>
+      <a href="#">Platform</a>
+      <a href="#">Solutions</a>
+      <a href="#">Security</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div>
+    <h1>Operational Intelligence<br/>From Sea to Space</h1>
+    <p>
+      SeaToSpace fuses maritime, climate, satellite, and enterprise data
+      into a single decision platform.
+      Build truth-based operational models, simulate outcomes,
+      and act with confidence.
+    </p>
+
+    <div class="actions">
+      <button>Request Demo</button>
+      <button class="secondary">View Platform</button>
+    </div>
+  </div>
+
+  <div class="panel glass">
+    <div class="stat">
+      <div class="kpi">
+        <span>Active Data Sources</span>
+        <b id="src">24</b>
+      </div>
+      <div class="kpi">
+        <span>Operational Alerts</span>
+        <b id="alert">7</b>
+      </div>
+      <div class="kpi">
+        <span>Forecast Confidence</span>
+        <b id="conf">91%</b>
+      </div>
+      <div class="kpi">
+        <span>Decision Latency</span>
+        <b id="lat">340 ms</b>
+      </div>
+    </div>
+
+    <div class="feed" id="feed"></div>
+  </div>
+</div>
+
+<section>
+  <h2>Core Capabilities</h2>
+  <div class="cards">
+    <div class="card glass">
+      <h3>Knowledge Graph</h3>
+      <p>Entities, events, assets, and signals unified with provenance and confidence scoring.</p>
+    </div>
+    <div class="card glass">
+      <h3>Data Fusion</h3>
+      <p>Integrate AIS, metocean, satellite, documents, and sensors in real time.</p>
+    </div>
+    <div class="card glass">
+      <h3>Simulation & What-If</h3>
+      <p>Run scenarios to stress decisions before consequences occur.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Who It's For</h2>
+  <div class="cards">
+    <div class="card glass">
+      <h3>Maritime & Offshore Ops</h3>
+      <p>Weather windows, routing risk, asset coordination.</p>
+    </div>
+    <div class="card glass">
+      <h3>Defense & Security</h3>
+      <p>Domain awareness, anomaly detection, mission planning.</p>
+    </div>
+    <div class="card glass">
+      <h3>Climate & Space Ops</h3>
+      <p>Satellite tasking, impact forecasting, resilience planning.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> SeaToSpace · Operational Intelligence Platform
+</footer>
+
+<script>
+const feed = document.getElementById("feed");
+const events = [
+  "AIS anomaly detected near corridor",
+  "Satellite pass ingested (SAR)",
+  "Metocean window updated",
+  "Forecast ensemble stabilized",
+  "Entity graph reconciled",
+  "Operational risk recalculated"
+];
+
+function addEvent(){
+  const e = document.createElement("div");
+  e.className="event";
+  e.textContent = `[${new Date().toLocaleTimeString()}] ${events[Math.floor(Math.random()*events.length)]}`;
+  feed.prepend(e);
+  if(feed.children.length>10) feed.lastChild.remove();
+}
+
+setInterval(addEvent,2000);
+addEvent();
+
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
+
+</body>
+</html>

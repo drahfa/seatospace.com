@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Solutions | SeaToSpace</title>
+
+<style>
+:root{
+  --bg:#05070f;
+  --glass:rgba(255,255,255,0.08);
+  --border:rgba(255,255,255,0.15);
+  --text:#e8ecff;
+  --muted:#9aa3c7;
+  --accent:#4fd1ff;
+  --accent2:#8b7cff;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto;
+  background:
+    radial-gradient(900px 500px at 15% 10%,rgba(79,209,255,.15),transparent 60%),
+    radial-gradient(900px 500px at 85% 20%,rgba(139,124,255,.15),transparent 60%),
+    var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(circle at 50% 20%, black, transparent 70%);
+  pointer-events:none;
+}
+
+.glass{
+  background:var(--glass);
+  backdrop-filter:blur(18px);
+  border:1px solid var(--border);
+  border-radius:18px;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  backdrop-filter:blur(16px);
+  background:rgba(5,7,15,.6);
+  border-bottom:1px solid var(--border);
+}
+
+.nav{
+  max-width:1200px;
+  margin:auto;
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+.logo svg{
+  display:block;
+  height:36px;
+  width:auto;
+}
+  font-weight:600;
+.logo svg{
+  display:block;
+  height:36px;
+  width:auto;
+}
+  letter-spacing:.5px;
+.logo svg{
+  display:block;
+  height:36px;
+  width:auto;
+}
+}
+.logo svg{
+  display:block;
+  height:36px;
+  width:auto;
+}
+
+.nav a{
+  color:var(--muted);
+  text-decoration:none;
+  margin-left:20px;
+  font-size:14px;
+}
+
+.nav a:hover{color:var(--text)}
+
+.hero{
+  max-width:1200px;
+  margin:60px auto 40px;
+  padding:0 20px;
+}
+
+.hero h1{
+  font-size:48px;
+  line-height:1.1;
+  margin-bottom:16px;
+}
+
+.hero p{
+  color:var(--muted);
+  max-width:65ch;
+  font-size:18px;
+}
+
+section{
+  max-width:1200px;
+  margin:80px auto;
+  padding:0 20px;
+}
+
+.solution{
+  margin-bottom:80px;
+}
+
+.solution h2{
+  font-size:32px;
+  margin-bottom:12px;
+}
+
+.solution-intro{
+  color:var(--muted);
+  max-width:75ch;
+  margin-bottom:30px;
+}
+
+.use-cases{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
+
+.use-case{
+  padding:20px;
+}
+
+.use-case h3{
+  font-size:16px;
+  margin:0 0 8px 0;
+}
+
+.use-case p{
+  font-size:14px;
+  color:var(--muted);
+  margin:0;
+}
+
+.stat-highlight{
+  display:inline-block;
+  padding:4px 10px;
+  background:rgba(79,209,255,.15);
+  border-radius:6px;
+  color:var(--accent);
+  font-weight:600;
+  margin-top:8px;
+  font-size:13px;
+}
+
+footer{
+  border-top:1px solid var(--border);
+  margin-top:80px;
+  padding:30px 20px;
+  color:var(--muted);
+  font-size:13px;
+  text-align:center;
+}
+
+@media(max-width:600px){
+  .logo svg{height:32px}
+  .logo svg .subtitle{display:none}
+}
+
+@media(max-width:900px){
+  .use-cases{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">
+      <a href="/" style="color:inherit;text-decoration:none;display:block">
+        <svg viewBox="0 0 180 36" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SeaToSpace">
+          <defs>
+            <linearGradient id="stsAccent" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#4fd1ff"/>
+              <stop offset="1" stop-color="#8b7cff"/>
+            </linearGradient>
+          </defs>
+          <g transform="translate(0,2)">
+            <rect x="0" y="0" width="32" height="32" rx="8"
+                  fill="none" stroke="currentColor" stroke-width="1.4" opacity=".7"/>
+            <ellipse cx="16" cy="8" rx="10" ry="3"
+                     fill="none" stroke="url(#stsAccent)" stroke-width="1.8" opacity=".9"/>
+            <ellipse cx="16" cy="8" rx="6" ry="1.8"
+                     fill="none" stroke="url(#stsAccent)" stroke-width="1.4" opacity=".6"/>
+            <circle cx="16" cy="16" r="2.5" fill="url(#stsAccent)" opacity=".95"/>
+            <path d="M 4 24 Q 8 22 12 24 T 20 24 T 28 24"
+                  fill="none" stroke="url(#stsAccent)" stroke-width="1.8" 
+                  stroke-linecap="round" opacity=".8"/>
+            <path d="M 6 28 Q 10 26 14 28 T 22 28 T 26 28"
+                  fill="none" stroke="currentColor" stroke-width="1.4" 
+                  stroke-linecap="round" opacity=".5"/>
+          </g>
+          <g transform="translate(42,6)">
+            <text x="0" y="16" fill="currentColor"
+                  font-size="16" font-weight="600"
+                  font-family="system-ui,-apple-system,Segoe UI,Roboto"
+                  letter-spacing=".4">SeaToSpace</text>
+            <text class="subtitle" x="0" y="30" fill="currentColor" opacity=".55"
+                  font-size="10"
+                  font-family="system-ui,-apple-system,Segoe UI,Roboto"
+                  letter-spacing=".2">
+              Operational Intelligence
+            </text>
+          </g>
+        </svg>
+      </a>
+    </div>
+    <div>
+      <a href="/platform.html">Platform</a>
+      <a href="/solutions.html">Solutions</a>
+      <a href="/security.html">Security</a>
+      <a href="/executive-ops.html">Executive Ops</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <h1>Operational Intelligence<br/>Across Domains</h1>
+  <p>
+    SeaToSpace serves organizations operating in contested, data-sparse, and
+    time-critical environments where decisions carry operational and strategic consequences.
+  </p>
+</div>
+
+<section>
+  <div class="solution">
+    <h2>Defense & National Security</h2>
+    <p class="solution-intro">
+      Build common operational pictures across maritime, space, and terrestrial domains.
+      Fuse intelligence from classified and open sources with machine-speed reconciliation.
+    </p>
+
+    <div class="use-cases">
+      <div class="use-case glass">
+        <h3>Maritime Domain Awareness</h3>
+        <p>
+          Track vessel movements, detect dark activity, correlate AIS with satellite
+          imagery and SIGINT. Identify patterns, predict intentions, and alert operators
+          to anomalies in near real-time.
+        </p>
+        <span class="stat-highlight">Sub-second alert latency</span>
+      </div>
+
+      <div class="use-case glass">
+        <h3>Mission Planning</h3>
+        <p>
+          Model routes, weather windows, asset availability, and threat surfaces.
+          Run scenario analysis to optimize logistics, timing, and resource allocation
+          before committing forces.
+        </p>
+      </div>
+
+      <div class="use-case glass">
+        <h3>Intelligence Fusion</h3>
+        <p>
+          Integrate GEOINT, SIGINT, OSINT, and HUMINT into a unified knowledge graph.
+          Automatically resolve entities, deduplicate reports, and surface contradictions
+          for analyst review.
+        </p>
+      </div>
+
+      <div class="use-case glass">
+        <h3>Coalition Operations</h3>
+        <p>
+          Share operational data with allies under fine-grained access controls.
+          Federated graph architecture allows cross-boundary queries without
+          data replication.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="solution">
+    <h2>Maritime & Offshore Operations</h2>
+    <p class="solution-intro">
+      De-risk offshore operations with integrated metocean forecasts, vessel tracking,
+      asset coordination, and supply chain visibility.
+    </p>
+
+    <div class="use-cases">
+      <div class="use-case glass">
+        <h3>Weather Window Optimization</h3>
+        <p>
+          Combine GRIB forecasts, vessel specs, and cargo constraints to identify
+          safe operating windows. Auto-update crew schedules and logistics plans
+          as conditions evolve.
+        </p>
+        <span class="stat-highlight">72hr forecast horizon</span>
+      </div>
+
+      <div class="use-case glass">
+        <h3>Vessel Routing & Tracking</h3>
+        <p>
+          Optimize routes for fuel efficiency, weather avoidance, and ETA accuracy.
+          Monitor fleet positions, detect deviations, and coordinate multi-vessel operations.
+        </p>
+      </div>
+
+      <div class="use-case glass">
+        <h3>Supply Chain Visibility</h3>
+        <p>
+          Track cargo from origin to offshore platform. Surface delays, bottlenecks,
+          and critical path risks before they cascade into operational impacts.
+        </p>
+      </div>
+
+      <div class="use-case glass">
+        <h3>Asset Health Monitoring</h3>
+        <p>
+          Fuse sensor telemetry, maintenance logs, and environmental conditions
+          to predict equipment failures and schedule interventions during weather windows.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="solution">
+    <h2>Climate & Environmental Operations</h2>
+    <p class="solution-intro">
+      Deploy data-driven climate resilience strategies with integrated earth observation,
+      modeling, and impact forecasting.
+    </p>
+
+    <div class="use-cases">
+      <div class="use-case glass">
+        <h3>Satellite Data Pipelines</h3>
+        <p>
+          Automate ingestion from Sentinel, Landsat, commercial providers, and
+          hyperspectral sensors. Run change detection, classification, and time-series
+          analysis at scale.
+        </p>
+      </div>
+
+      <div class="use-case glass">
+        <h3>Climate Impact Modeling</h3>
+        <p>
+          Combine climate projections with infrastructure inventories to forecast
+          flood risk, heat stress, and sea-level impacts. Prioritize adaptation investments
+          with cost-benefit analysis.
+        </p>
+      </div>
+
+      <div class="use-case glass">
+        <h3>Carbon & Emissions Tracking</h3>
+        <p>
+          Monitor industrial emissions, shipping routes, and land-use change.
+          Verify compliance, quantify offsets, and generate auditable reports
+          for stakeholders.
+        </p>
+      </div>
+
+      <div class="use-case glass">
+        <h3>Disaster Response</h3>
+        <p>
+          Pre-position resources based on hurricane tracks, wildfire models, and
+          flood forecasts. Coordinate multi-agency response with shared situational
+          awareness.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="solution">
+    <h2>Space Operations</h2>
+    <p class="solution-intro">
+      Coordinate satellite tasking, ground station networks, and downlink processing
+      with integrated mission planning tools.
+    </p>
+
+    <div class="use-cases">
+      <div class="use-case glass">
+        <h3>Satellite Tasking Optimization</h3>
+        <p>
+          Schedule constellation passes, prioritize imaging targets, and optimize
+          downlink windows. Balance competing mission requirements with orbital
+          constraints.
+        </p>
+      </div>
+
+      <div class="use-case glass">
+        <h3>Space Domain Awareness</h3>
+        <p>
+          Track orbital debris, conjunction events, and satellite health telemetry.
+          Predict collision risk and coordinate avoidance maneuvers.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> SeaToSpace · Operational Intelligence Platform
+</footer>
+
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
+
+</body>
+</html>
