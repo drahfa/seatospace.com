@@ -351,11 +351,44 @@ footer{
 <script>
 document.getElementById("year").textContent=new Date().getFullYear();
 
-document.getElementById("contact-form").addEventListener("submit", function(e){
+document.getElementById("contact-form").addEventListener("submit", async function(e){
   e.preventDefault();
-  alert("Thank you for your interest. Our team will be in touch shortly.");
-  this.reset();
+  
+  const form = this;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalText = submitBtn.textContent;
+  
+  // Disable submit button
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+  
+  // Prepare form data
+  const formData = new FormData(form);
+  
+  try {
+    const response = await fetch('/send-contact.php', {
+      method: 'POST',
+      body: formData
+    });
+    
+    const result = await response.json();
+    
+    if (result.success) {
+      alert(result.message);
+      form.reset();
+    } else {
+      alert('Error: ' + result.message);
+    }
+  } catch (error) {
+    alert('An error occurred. Please try again later or email us directly at sales@seatospace.com');
+    console.error('Form submission error:', error);
+  } finally {
+    // Re-enable submit button
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalText;
+  }
 });
+
 </script>
 
 </body>
